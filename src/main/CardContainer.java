@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CardContainer {
 	
-	private List<Card> cards;
+	protected List<Card> cards;
 	
 	public CardContainer() {
 		cards = new ArrayList<Card>();
