@@ -9,6 +9,11 @@ public class Card {
 		suit = s;
 		value = v;
 	}
+	
+	@Override
+	public String toString() {
+		return value.toString() + suit.toString();
+	}
 
 	public Suit getSuit() {
 		return suit;
