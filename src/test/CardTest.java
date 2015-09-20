@@ -21,5 +21,15 @@ public class CardTest {
 		assertEquals(card.getValue(), value);
 		assertEquals(card.getSuit(), suit);
 	}
-
+	
+	@Test
+	public void testToString() throws Exception {
+		
+		Card card1 = new Card(Value.ACE, Suit.SPADES);
+		Card card2 = new Card(Value.TWO, Suit.HEARTS);
+		
+		assertEquals("AceSpades", card1.toString());
+		assertEquals("TwoHearts", card2.toString());
+	}
+	
 }
