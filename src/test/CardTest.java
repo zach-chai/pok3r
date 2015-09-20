@@ -18,8 +18,8 @@ public class CardTest {
 		Card card = new Card(value, suit);
 		
 		assertNotNull(card);
-		assertEquals(card.getValue(), value);
-		assertEquals(card.getSuit(), suit);
+		assertEquals(value, card.getValue());
+		assertEquals(suit, card.getSuit());
 	}
 	
 	@Test

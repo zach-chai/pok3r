@@ -5,6 +5,10 @@ public class Card {
 	private Suit suit;
 	private Value value;
 	
+	public Card() {
+		this(Value.random(), Suit.random());
+	}
+	
 	public Card(Value v, Suit s) {
 		suit = s;
 		value = v;
