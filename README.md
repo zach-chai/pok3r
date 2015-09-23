@@ -1,1 +1,1 @@
-# pok3r
+# Poker project
