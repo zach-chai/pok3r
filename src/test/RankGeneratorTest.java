@@ -85,7 +85,11 @@ public class RankGeneratorTest {
 		assertFalse(gen.isOfMinimumKind(4));
 		assertTrue(gen.hasDuplicates());
 		
-
+		gen = new RankGenerator(hands[3]);
+		assertTrue(gen.isFlush());
+		
+		gen = new RankGenerator(hands[4]);
+		assertFalse(gen.isFlush());
 	}
 
 }
