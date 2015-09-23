@@ -27,10 +27,16 @@ public class RankGenerator {
 //	public boolean isFourOfAKind() {
 //		
 //	}
-//	
-//	public boolean isFlush() {
-//
-//	}
+	
+	public boolean isFlush() {
+		Suit suit = hand.getCards().get(0).getSuit();
+		for(int i = 1; i < hand.getCards().size(); i++) {
+			if(!hand.getCards().get(i).getSuit().equals(suit)) {
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	public boolean isOfMinimumKind(int kind) {
 		if(kind < 1 || kind > 4) {
