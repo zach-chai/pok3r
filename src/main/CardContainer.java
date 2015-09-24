@@ -23,6 +23,15 @@ public class CardContainer {
 	public void add(Card card){
 		cards.add(card);
 	}
+	
+	public boolean containsValue(Value value) {
+		for(Card card: cards) {
+			if(card.getValue() == value) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public List<Card> getCards() {
 		return cards;
