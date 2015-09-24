@@ -83,6 +83,15 @@ public class RankGeneratorTest {
 						new Card(Value.QUEEN, Suit.CLUBS)
 				}
 				);
+		hands[7] = new Hand(
+				new Card[] {
+						new Card(Value.QUEEN, Suit.SPADES),
+						new Card(Value.QUEEN, Suit.HEARTS),
+						new Card(Value.TWO, Suit.HEARTS),
+						new Card(Value.QUEEN, Suit.DIAMONDS),
+						new Card(Value.QUEEN, Suit.CLUBS)
+				}
+				);
 		
 	}
 
@@ -208,6 +217,45 @@ public class RankGeneratorTest {
 		
 		gen = new RankGenerator(hands[6]);
 		assertTrue(gen.hasTwoPair());
+	}
+	
+	@Test
+	public void testHasThreeOfAKind() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.hasThreeOfAKInd());
+		
+		gen = new RankGenerator(hands[1]);
+		assertTrue(gen.hasThreeOfAKInd());
+		
+		gen = new RankGenerator(hands[5]);
+		assertTrue(gen.hasThreeOfAKInd());
+		
+		gen = new RankGenerator(hands[7]);
+		assertFalse(gen.hasThreeOfAKInd());
+	}
+	
+	@Test
+	public void testHasFourOfAKind() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.hasFourOfAKind());
+		
+		gen = new RankGenerator(hands[5]);
+		assertFalse(gen.hasFourOfAKind());
+		
+		gen = new RankGenerator(hands[7]);
+		assertTrue(gen.hasFourOfAKind());
+	}
+	
+	@Test
+	public void testIsFullHouse() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.isFullHouse());
+		
+		gen = new RankGenerator(hands[5]);
+		assertTrue(gen.isFullHouse());
+		
+		gen = new RankGenerator(hands[7]);
+		assertFalse(gen.isFullHouse());
 	}
 
 }
