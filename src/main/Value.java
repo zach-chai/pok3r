@@ -3,8 +3,8 @@ package main;
 import java.util.Random;
 
 public enum Value {
-	ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN,
-	EIGHT, NINE, TEN, JACK, QUEEN, KING;
+	TWO, THREE, FOUR, FIVE, SIX, SEVEN,
+	EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE;
 	
 	public static Value random() {
 		return Value.values()[new Random().nextInt(Value.values().length)];
