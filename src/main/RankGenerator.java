@@ -38,6 +38,28 @@ public class RankGenerator {
 		return true;
 	}
 	
+	public boolean isStraight() {
+		Card minCard = hand.getCards().get(0);
+		boolean hasNextCard = false;
+		for(int i = 1; i < hand.getCards().size(); i++) {
+			if(hand.getCards().get(i).getValue().compareTo(minCard.getValue()) < 0) {
+				minCard = hand.getCards().get(i);
+			}
+		}
+		for(int i = 1; i < hand.getCards().size(); i++) {
+			hasNextCard = false;
+			for(int j = 0; i < hand.getCards().size(); i++) {
+				if(hand.getCards().get(j).getValue().ordinal() == minCard.getValue().ordinal() + i) {
+					hasNextCard = true;
+				}
+			}
+			if(!hasNextCard) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public boolean isOfMinimumKind(int kind) {
 		if(kind < 1 || kind > 4) {
 			return false;
