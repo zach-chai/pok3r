@@ -14,6 +14,10 @@ public class Card {
 		value = v;
 	}
 	
+	public Card(String card) {
+		// TODO needs implementation
+	}
+	
 	@Override
 	public String toString() {
 		return value.toString() + suit.toString();

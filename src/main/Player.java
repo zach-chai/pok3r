@@ -10,7 +10,11 @@ public class Player {
 	private Hand hand;
 	
 	public Player() {
-		this(null, new Hand());
+		this(new Hand());
+	}
+	
+	public Player(Hand hand) {
+		this(null, hand);
 	}
 	
 	public Player(String name, Hand hand) {
