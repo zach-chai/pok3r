@@ -74,11 +74,62 @@ public class RankGeneratorTest {
 						new Card(Value.QUEEN, Suit.CLUBS)
 				}
 				);
+		hands[6] = new Hand(
+				new Card[] {
+						new Card(Value.TWO, Suit.SPADES),
+						new Card(Value.QUEEN, Suit.HEARTS),
+						new Card(Value.TWO, Suit.HEARTS),
+						new Card(Value.JACK, Suit.DIAMONDS),
+						new Card(Value.QUEEN, Suit.CLUBS)
+				}
+				);
 		
 	}
 
 	@After
 	public void tearDown() throws Exception {
+	}
+	
+	public Integer[] getKindsForTesting(RankGenerator gen) {
+		return gen.getKinds().toArray(new Integer[gen.getKinds().size()]);
+	}
+	
+	@Test
+	public void testGetKinds() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		Integer[] expected = new Integer[]{1, 1, 1, 1, 1};
+		assertArrayEquals(expected, getKindsForTesting(gen));
+		
+		gen = new RankGenerator(hands[1]);
+		expected = new Integer[]{1, 3, 1};
+		assertArrayEquals(expected, getKindsForTesting(gen));
+		
+		gen = new RankGenerator(hands[2]);
+		expected = new Integer[]{1, 2, 1, 1};
+		assertArrayEquals(expected, getKindsForTesting(gen));
+		
+		gen = new RankGenerator(hands[5]);
+		assertArrayEquals(new Integer[]{2, 3}, getKindsForTesting(gen));
+		
+		gen = new RankGenerator(hands[6]);
+		assertArrayEquals(new Integer[]{2, 2, 1}, getKindsForTesting(gen));
+	}
+	
+	@Test
+	public void testhasKind() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertTrue(gen.hasKind(1));
+		assertFalse(gen.hasKind(2));
+		
+		gen = new RankGenerator(hands[1]);
+		assertFalse(gen.hasKind(2));
+		assertTrue(gen.hasKind(3));
+		
+		gen = new RankGenerator(hands[5]);
+		assertTrue(gen.hasKind(2));
+		assertTrue(gen.hasKind(3));
+		assertFalse(gen.hasKind(4));
+		assertFalse(gen.hasKind(1));
 	}
 
 	@Test
@@ -126,23 +177,6 @@ public class RankGeneratorTest {
 	}
 	
 	@Test
-	public void testhasKind() throws Exception {
-		RankGenerator gen = new RankGenerator(hands[0]);
-		assertTrue(gen.hasKind(1));
-		assertFalse(gen.hasKind(2));
-		
-		gen = new RankGenerator(hands[1]);
-		assertFalse(gen.hasKind(2));
-		assertTrue(gen.hasKind(3));
-		
-		gen = new RankGenerator(hands[5]);
-		assertTrue(gen.hasKind(2));
-		assertTrue(gen.hasKind(3));
-		assertFalse(gen.hasKind(4));
-		assertFalse(gen.hasKind(1));
-	}
-	
-	@Test
 	public void testIsStraight() throws Exception {
 		RankGenerator gen = new RankGenerator(hands[0]);
 		assertFalse(gen.isStraight());
@@ -156,5 +190,6 @@ public class RankGeneratorTest {
 		gen = new RankGenerator(hands[4]);
 		assertTrue(gen.isStraight());
 	}
+	
 
 }
