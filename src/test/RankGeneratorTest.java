@@ -92,7 +92,24 @@ public class RankGeneratorTest {
 						new Card(Value.QUEEN, Suit.CLUBS)
 				}
 				);
-		
+		hands[8] = new Hand(
+				new Card[] {
+						new Card(Value.TEN, Suit.HEARTS),
+						new Card(Value.SEVEN, Suit.HEARTS),
+						new Card(Value.NINE, Suit.HEARTS),
+						new Card(Value.EIGHT, Suit.HEARTS),
+						new Card(Value.JACK, Suit.HEARTS)
+					}
+				);
+		hands[9] = new Hand(
+				new Card[] {
+						new Card(Value.ACE, Suit.DIAMONDS),
+						new Card(Value.QUEEN, Suit.DIAMONDS),
+						new Card(Value.KING, Suit.DIAMONDS),
+						new Card(Value.TEN, Suit.DIAMONDS),
+						new Card(Value.JACK, Suit.DIAMONDS)
+					}
+				);
 	}
 
 	@After
@@ -256,6 +273,39 @@ public class RankGeneratorTest {
 		
 		gen = new RankGenerator(hands[7]);
 		assertFalse(gen.isFullHouse());
+	}
+	
+	@Test
+	public void testHasStraightFlush() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.hasStraightFlush());
+		
+		gen = new RankGenerator(hands[3]);
+		assertFalse(gen.hasStraightFlush());
+		
+		gen = new RankGenerator(hands[4]);
+		assertFalse(gen.hasStraightFlush());
+		
+		gen = new RankGenerator(hands[8]);
+		assertTrue(gen.hasStraightFlush());
+	}
+	
+	@Test
+	public void testisRoyalFlush() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.isRoyalFlush());
+		
+		gen = new RankGenerator(hands[3]);
+		assertFalse(gen.isRoyalFlush());
+		
+		gen = new RankGenerator(hands[4]);
+		assertFalse(gen.isRoyalFlush());
+		
+		gen = new RankGenerator(hands[8]);
+		assertFalse(gen.isRoyalFlush());
+		
+		gen = new RankGenerator(hands[9]);
+		assertTrue(gen.isRoyalFlush());
 	}
 
 }
