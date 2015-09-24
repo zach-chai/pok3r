@@ -6,6 +6,7 @@ import java.time.temporal.IsoFields;
 
 import main.Card;
 import main.Hand;
+import main.HandCardRank;
 import main.RankGenerator;
 import main.Suit;
 import main.Value;
@@ -306,6 +307,27 @@ public class RankGeneratorTest {
 		
 		gen = new RankGenerator(hands[9]);
 		assertTrue(gen.isRoyalFlush());
+	}
+	
+	@Test
+	public void testHandCardRank() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertEquals(HandCardRank.HighCard, gen.Generate());
+		
+		gen = new RankGenerator(hands[3]);
+		assertEquals(HandCardRank.Flush, gen.Generate());
+		
+		gen = new RankGenerator(hands[4]);
+		assertEquals(HandCardRank.Straight, gen.Generate());
+		
+		gen = new RankGenerator(hands[5]);
+		assertEquals(HandCardRank.FullHouse, gen.Generate());
+		
+		gen = new RankGenerator(hands[8]);
+		assertEquals(HandCardRank.StraightFlush, gen.Generate());
+		
+		gen = new RankGenerator(hands[9]);
+		assertEquals(HandCardRank.RoyalFlush, gen.Generate());
 	}
 
 }
