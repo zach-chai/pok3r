@@ -1,5 +1,8 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RankGenerator {
 	
 	private Hand hand;
@@ -29,6 +32,14 @@ public class RankGenerator {
 //	}
 //	
 //	public boolean isFullHouse() {
+//		
+//	}
+//	
+//	public boolean isTwoPair() {
+//		
+//	}
+//	
+//	public boolean hasOnePair() {
 //		
 //	}
 	
@@ -64,13 +75,14 @@ public class RankGenerator {
 		return true;
 	}
 	
-	public boolean hasKind(int kind) {
-		if(kind < 1 || kind > 4) {
-			return false;
-		}
-	
+	public List<Integer> getKinds() {
+		List<Integer> kinds = new ArrayList<Integer>();
+		List<Value> checked = new ArrayList<Value>();
 		int currentKind = 1;
 		for(int i = 0; i < hand.getCards().size(); i++) {
+			if(checked.contains(hand.getCards().get(i).getValue())) {
+				continue;
+			}
 			for(int j = 0; j < hand.getCards().size(); j++) {
 				if(i == j) {
 					continue;
@@ -79,19 +91,28 @@ public class RankGenerator {
 					++currentKind;
 				}
 			}
-			if(currentKind == kind)
-				return true;
+			checked.add(hand.getCards().get(i).getValue());
+			kinds.add(currentKind);
 			currentKind = 1;
 		}
-		return false;
+		return kinds;
+	}
+	
+	public boolean hasKind(int kind) {
+		if(kind < 1 || kind > 4) {
+			return false;
+		}
+		
+		return getKinds().contains(kind);
 	}
 	
 	public boolean isOfMinimumKind(int kind) {
 		if(kind < 1) {
 			return false;
 		}
+		List<Integer> kinds = getKinds(); 
 		for(int i = 0; i < 5 - kind; i++) {
-			if(hasKind(kind + i)) {
+			if(kinds.contains(kind + i)) {
 				return true;
 			}
 		}
