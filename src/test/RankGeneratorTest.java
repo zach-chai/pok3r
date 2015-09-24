@@ -65,6 +65,15 @@ public class RankGeneratorTest {
 						new Card(Value.JACK, Suit.HEARTS)
 					}
 				);
+		hands[5] = new Hand(
+				new Card[] {
+						new Card(Value.TWO, Suit.SPADES),
+						new Card(Value.QUEEN, Suit.HEARTS),
+						new Card(Value.TWO, Suit.HEARTS),
+						new Card(Value.QUEEN, Suit.DIAMONDS),
+						new Card(Value.QUEEN, Suit.CLUBS)
+				}
+				);
 		
 	}
 
@@ -85,6 +94,7 @@ public class RankGeneratorTest {
 		assertTrue(gen.isOfMinimumKind(3));
 		assertFalse(gen.isOfMinimumKind(4));
 		assertTrue(gen.hasDuplicates());
+		assertFalse(gen.hasKind(2));
 		assertFalse(gen.isStraight());
 		
 		gen = new RankGenerator(hands[3]);
@@ -93,6 +103,57 @@ public class RankGeneratorTest {
 		
 		gen = new RankGenerator(hands[4]);
 		assertFalse(gen.isFlush());
+		assertTrue(gen.isStraight());
+		
+		gen = new RankGenerator(hands[5]);
+		assertTrue(gen.hasKind(2));
+		assertTrue(gen.hasKind(3));
+	}
+	
+	@Test
+	public void testhasDuplicates() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.hasDuplicates());
+		
+		gen = new RankGenerator(hands[1]);
+		assertTrue(gen.hasDuplicates());
+		
+		gen = new RankGenerator(hands[3]);
+		assertFalse(gen.hasDuplicates());
+		
+		gen = new RankGenerator(hands[5]);
+		assertTrue(gen.hasDuplicates());
+	}
+	
+	@Test
+	public void testhasKind() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertTrue(gen.hasKind(1));
+		assertFalse(gen.hasKind(2));
+		
+		gen = new RankGenerator(hands[1]);
+		assertFalse(gen.hasKind(2));
+		assertTrue(gen.hasKind(3));
+		
+		gen = new RankGenerator(hands[5]);
+		assertTrue(gen.hasKind(2));
+		assertTrue(gen.hasKind(3));
+		assertFalse(gen.hasKind(4));
+		assertFalse(gen.hasKind(1));
+	}
+	
+	@Test
+	public void testIsStraight() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.isStraight());
+		
+		gen = new RankGenerator(hands[1]);
+		assertFalse(gen.isStraight());
+		
+		gen = new RankGenerator(hands[3]);
+		assertFalse(gen.isStraight());
+		
+		gen = new RankGenerator(hands[4]);
 		assertTrue(gen.isStraight());
 	}
 
