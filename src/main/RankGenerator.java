@@ -27,14 +27,14 @@ public class RankGenerator {
 //	public boolean isStraightFlush() {
 //		
 //	}
-//	
-//	public boolean isFourOfAKind() {
-//		
-//	}
-//	
-//	public boolean isFullHouse() {
-//		
-//	}
+	
+	public boolean hasFourOfAKind() {
+		return hasKind(4);
+	}
+	
+	public boolean isFullHouse() {
+		return hasThreeOfAKInd() && hasOnePair();
+	}
 	
 	public boolean hasFlush() {
 		Suit suit = hand.getCards().get(0).getSuit();
@@ -66,6 +66,10 @@ public class RankGenerator {
 			}
 		}
 		return true;
+	}
+	
+	public boolean hasThreeOfAKInd() {
+		return hasKind(3);
 	}
 	
 	public boolean hasTwoPair() {
