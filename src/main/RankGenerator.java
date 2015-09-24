@@ -12,13 +12,18 @@ public class RankGenerator {
 		this.hand = hand;
 	}
 	
-//	public HandCardRank Generate() {
-//		if(isRoyalFlush())
-//			return HandCardRank.RoyalFlush;
-//		else if(isStraightFlush())
-//			return HandCardRank.StraightFlush;
-//		return HandCardRank.HighCard;
-//	}
+	public HandCardRank Generate() {
+		if(isRoyalFlush()) return HandCardRank.RoyalFlush;
+		else if(hasStraightFlush()) return HandCardRank.StraightFlush;
+		else if(hasFourOfAKind()) return HandCardRank.FourKind;
+		else if(isFullHouse()) return HandCardRank.FullHouse;
+		else if(hasFlush()) return HandCardRank.Flush;
+		else if(hasStraight()) return HandCardRank.Straight;
+		else if(hasThreeOfAKInd()) return HandCardRank.ThreeKind;
+		else if(hasTwoPair()) return HandCardRank.TwoPair;
+		else if(hasOnePair()) return HandCardRank.OnePair;
+		return HandCardRank.HighCard;
+	}
 	
 	public boolean isRoyalFlush() {
 		return hasStraightFlush() && hand.containsValue(Value.ACE);
