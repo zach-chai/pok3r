@@ -47,6 +47,10 @@ public class HandRankTest {
 		HandRank higherHighCard = new HandRank(rank, new Card(Value.JACK, Suit.CLUBS));
 		
 		assertTrue(lowerHighCard.compareTo(higherHighCard) < 0);
+		
+		higherHighCard = new HandRank(rank, new Card(Value.ACE, Suit.CLUBS));
+		
+		assertTrue(lowerHighCard.compareTo(higherHighCard) < 0);
 	}
 
 }
