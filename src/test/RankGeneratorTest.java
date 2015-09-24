@@ -79,17 +79,21 @@ public class RankGeneratorTest {
 		assertFalse(gen.isOfMinimumKind(2));
 		assertFalse(gen.isOfMinimumKind(0));
 		assertFalse(gen.hasDuplicates());
+		assertFalse(gen.isStraight());
 		
 		gen = new RankGenerator(hands[1]);
 		assertTrue(gen.isOfMinimumKind(3));
 		assertFalse(gen.isOfMinimumKind(4));
 		assertTrue(gen.hasDuplicates());
+		assertFalse(gen.isStraight());
 		
 		gen = new RankGenerator(hands[3]);
 		assertTrue(gen.isFlush());
+		assertFalse(gen.isStraight());
 		
 		gen = new RankGenerator(hands[4]);
 		assertFalse(gen.isFlush());
+		assertTrue(gen.isStraight());
 	}
 
 }
