@@ -27,6 +27,10 @@ public class RankGenerator {
 //	public boolean isFourOfAKind() {
 //		
 //	}
+//	
+//	public boolean isFullHouse() {
+//		
+//	}
 	
 	public boolean isFlush() {
 		Suit suit = hand.getCards().get(0).getSuit();
@@ -60,24 +64,38 @@ public class RankGenerator {
 		return true;
 	}
 	
-	public boolean isOfMinimumKind(int kind) {
+	public boolean hasKind(int kind) {
 		if(kind < 1 || kind > 4) {
 			return false;
 		}
-		
-		int maxKind = 1;
+	
 		int currentKind = 1;
 		for(int i = 0; i < hand.getCards().size(); i++) {
-			for(int j = i + 1; j < hand.getCards().size(); j++) {
+			for(int j = 0; j < hand.getCards().size(); j++) {
+				if(i == j) {
+					continue;
+				}
 				if(hand.getCards().get(i).getValue().equals(hand.getCards().get(j).getValue())) {
 					++currentKind;
 				}
 			}
-			if(maxKind < currentKind)
-				maxKind = currentKind;
+			if(currentKind == kind)
+				return true;
 			currentKind = 1;
 		}
-		return maxKind >= kind;
+		return false;
+	}
+	
+	public boolean isOfMinimumKind(int kind) {
+		if(kind < 1) {
+			return false;
+		}
+		for(int i = 0; i < 5 - kind; i++) {
+			if(hasKind(kind + i)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean hasDuplicates() {
