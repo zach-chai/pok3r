@@ -19,14 +19,14 @@ public class RankGenerator {
 //			return HandCardRank.StraightFlush;
 //		return HandCardRank.HighCard;
 //	}
-//	
-//	public boolean isRoyalFlush() {
-//		
-//	}
-//	
-//	public boolean isStraightFlush() {
-//		
-//	}
+	
+	public boolean isRoyalFlush() {
+		return hasStraightFlush() && hand.containsValue(Value.ACE);
+	}
+	
+	public boolean hasStraightFlush() {
+		return hasStraight() && hasFlush();
+	}
 	
 	public boolean hasFourOfAKind() {
 		return hasKind(4);
