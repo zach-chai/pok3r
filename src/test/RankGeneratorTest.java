@@ -138,27 +138,10 @@ public class RankGeneratorTest {
 		assertTrue(gen.isOfMinimumKind(1));
 		assertFalse(gen.isOfMinimumKind(2));
 		assertFalse(gen.isOfMinimumKind(0));
-		assertFalse(gen.hasDuplicates());
-		assertFalse(gen.isStraight());
 		
 		gen = new RankGenerator(hands[1]);
 		assertTrue(gen.isOfMinimumKind(3));
 		assertFalse(gen.isOfMinimumKind(4));
-		assertTrue(gen.hasDuplicates());
-		assertFalse(gen.hasKind(2));
-		assertFalse(gen.isStraight());
-		
-		gen = new RankGenerator(hands[3]);
-		assertTrue(gen.isFlush());
-		assertFalse(gen.isStraight());
-		
-		gen = new RankGenerator(hands[4]);
-		assertFalse(gen.isFlush());
-		assertTrue(gen.isStraight());
-		
-		gen = new RankGenerator(hands[5]);
-		assertTrue(gen.hasKind(2));
-		assertTrue(gen.hasKind(3));
 	}
 	
 	@Test
@@ -177,19 +160,54 @@ public class RankGeneratorTest {
 	}
 	
 	@Test
-	public void testIsStraight() throws Exception {
+	public void testHasFlush() throws Exception {
 		RankGenerator gen = new RankGenerator(hands[0]);
-		assertFalse(gen.isStraight());
-		
-		gen = new RankGenerator(hands[1]);
-		assertFalse(gen.isStraight());
+		assertFalse(gen.hasFlush());
 		
 		gen = new RankGenerator(hands[3]);
-		assertFalse(gen.isStraight());
+		assertTrue(gen.hasFlush());
 		
 		gen = new RankGenerator(hands[4]);
-		assertTrue(gen.isStraight());
+		assertFalse(gen.hasFlush());
 	}
 	
+	@Test
+	public void testHasStraight() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.hasStraight());
+		
+		gen = new RankGenerator(hands[1]);
+		assertFalse(gen.hasStraight());
+		
+		gen = new RankGenerator(hands[3]);
+		assertFalse(gen.hasStraight());
+		
+		gen = new RankGenerator(hands[4]);
+		assertTrue(gen.hasStraight());
+	}
+	
+	@Test
+	public void testHasOnePair() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.hasOnePair());
+		
+		gen = new RankGenerator(hands[2]);
+		assertTrue(gen.hasOnePair());
+		
+		gen = new RankGenerator(hands[5]);
+		assertTrue(gen.hasOnePair());
+	}
+	
+	@Test
+	public void testHasTwoPair() throws Exception {
+		RankGenerator gen = new RankGenerator(hands[0]);
+		assertFalse(gen.hasTwoPair());
+		
+		gen = new RankGenerator(hands[2]);
+		assertFalse(gen.hasTwoPair());
+		
+		gen = new RankGenerator(hands[6]);
+		assertTrue(gen.hasTwoPair());
+	}
 
 }
