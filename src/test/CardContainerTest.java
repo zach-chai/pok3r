@@ -3,6 +3,8 @@ package test;
 import static org.junit.Assert.*;
 import main.Card;
 import main.CardContainer;
+import main.Suit;
+import main.Value;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -50,6 +52,21 @@ public class CardContainerTest {
 		
 		cards.remove(cardRef);
 		assertEquals(size - 1, cards.getCards().size());
+	}
+	
+	@Test
+	public void testcontainsValue() throws Exception {
+		CardContainer cards = new CardContainer(
+				new Card[] {
+					new Card(Value.TWO, Suit.SPADES),
+					new Card(Value.QUEEN, Suit.HEARTS),
+					new Card(Value.ACE, Suit.HEARTS),
+					new Card(Value.EIGHT, Suit.DIAMONDS),
+					new Card(Value.SEVEN, Suit.CLUBS)
+				});
+		assertTrue(cards.containsValue(Value.ACE));
+		assertTrue(cards.containsValue(Value.SEVEN));
+		assertFalse(cards.containsValue(Value.KING));
 	}
 
 }
