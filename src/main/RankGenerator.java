@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RankGenerator {
@@ -34,16 +35,8 @@ public class RankGenerator {
 //	public boolean isFullHouse() {
 //		
 //	}
-//	
-//	public boolean isTwoPair() {
-//		
-//	}
-//	
-//	public boolean hasOnePair() {
-//		
-//	}
 	
-	public boolean isFlush() {
+	public boolean hasFlush() {
 		Suit suit = hand.getCards().get(0).getSuit();
 		for(int i = 1; i < hand.getCards().size(); i++) {
 			if(!hand.getCards().get(i).getSuit().equals(suit)) {
@@ -53,7 +46,7 @@ public class RankGenerator {
 		return true;
 	}
 	
-	public boolean isStraight() {
+	public boolean hasStraight() {
 		Card minCard = hand.getCards().get(0);
 		boolean hasNextCard = false;
 		for(int i = 1; i < hand.getCards().size(); i++) {
@@ -73,6 +66,16 @@ public class RankGenerator {
 			}
 		}
 		return true;
+	}
+	
+	public boolean hasTwoPair() {
+		List<Integer> kinds = getKinds();
+		Collections.sort(kinds);
+		return kinds.get(1) == 2 && kinds.get(2) == 2;
+	}
+	
+	public boolean hasOnePair() {
+		return hasKind(2);
 	}
 	
 	public List<Integer> getKinds() {
