@@ -1,4 +1,4 @@
-package main;
+
 
 public class Card {
 	
@@ -32,7 +32,7 @@ public class Card {
 			}
 		}
 		if(this.value == null || this.suit == null) {
-			throw new IllegalArgumentException("Invalid Card");
+			throw new IllegalArgumentException(card);
 		}
 	}
 	

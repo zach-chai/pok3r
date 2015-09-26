@@ -1,14 +1,10 @@
-package test;
 
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.Before;
-
-import main.Card;
-import main.Suit;
-import main.Value;
-
 import org.junit.Test;
 
 public class CardTest {

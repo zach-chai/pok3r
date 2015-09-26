@@ -1,4 +1,4 @@
-package main;
+
 
 public class HandRank implements Comparable<HandRank> {
 

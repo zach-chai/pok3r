@@ -1,8 +1,9 @@
-package main;
 
+
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Player {
+public class Player implements Comparable<Player> {
 	
 	private static final AtomicInteger players = new AtomicInteger(0);
 	private final int id;
@@ -21,6 +22,20 @@ public class Player {
 		this.id = players.getAndIncrement();
 		this.name = name;
 		this.hand = hand;
+	}
+	
+	public static Player getPlayerById(List<Player> players, int id) {
+		for(Player p: players) {
+			if(p.getId() == id) {
+				return p;
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public int compareTo(Player o) {
+		return this.hand.getRank().compareTo(o.getHand().getRank());
 	}
 
 	public String getName() {

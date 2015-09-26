@@ -1,10 +1,8 @@
-package test;
 
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import main.Utilities;
 
 public class UtilitiesTest {
 
