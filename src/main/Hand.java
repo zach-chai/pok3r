@@ -17,6 +17,11 @@ public class Hand extends CardContainer {
 			this.cards.add(new Card(str));
 		}
 	}
+	
+	public void generateRank() {
+		RankGenerator rg = new RankGenerator(this);
+		rank = new HandRank(rg.Generate(), this.getHighCard());
+	}
 
 	public HandRank getRank() {
 		return rank;
