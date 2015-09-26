@@ -12,8 +12,10 @@ public class Hand extends CardContainer {
 		super(cards);
 	}
 	
-	public Hand(String s1, String s2, String s3, String s4, String s5) {
-		// TODO needs implementation
+	public Hand(String[] cards) {
+		for(String str: cards) {
+			this.cards.add(new Card(str));
+		}
 	}
 
 	public HandRank getRank() {
