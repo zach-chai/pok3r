@@ -18,9 +18,11 @@ public class Round {
 	public Round(BufferedReader input, BufferedWriter output) {
 		this.console = input;
 		this.out = output;
+		this.players = new ArrayList<Player>();
 	}
 	
 	public void setupRound() {
+		this.resetData();
 		do {
 			println("Enter number of players for this round");
 			try {
@@ -29,7 +31,6 @@ public class Round {
 			}
 		} while(num < 2 || num > 4);
 		
-		this.players = new ArrayList<Player>();
 		Player p;
 		for(int i = 0; i < num; ++i) {
 			p = new Player();
@@ -81,7 +82,6 @@ public class Round {
 					++i, player.getId(), player.getHand().toString());
 			println(output);
 		}
-		closeInput();
 	}
 	
 	public String getInput() {
@@ -102,6 +102,11 @@ public class Round {
 		}
 	}
 	
+	public void cleanup() {
+		closeInput();
+		closeOutput();
+	}
+	
 	public void closeInput() {
 		try {
 			console.close();
@@ -110,12 +115,20 @@ public class Round {
 		}
 	}
 	
-	public void softResetData() {
+	public void closeOutput() {
+		try {
+			out.close();
+		} catch (IOException e) {
+			println("Could not close input");
+		}
+	}
+	
+	public void resetData() {
 		players.clear();
 	}
 	
 	public void hardResetData() {
-		softResetData();
+		resetData();
 		Player.resetPlayers();
 	}
 
