@@ -1,4 +1,4 @@
-# Poker project
+# Poker Project
 
 Name: Zachary Chai
 
@@ -24,4 +24,11 @@ Alternatively
 
 
 ### Traceability
-Each Class's tests are in a file suffixed with the word test, tests for ```Card.java``` are in ```CardTest.java```. 
+* Each Class's tests are in a file suffixed with the word test, tests for ```Card.java``` are in ```CardTest.java```.
+* Tests for Top level Game flow are in RoundTest.java
+* Tests for determining the hands (Flush, Straight, etc) of Cards are in RankGeneratorTest.java
+* Tests for constructing cards from text are in CardTest.java
+* Many other tests in the test folder for various functions
+
+
+
