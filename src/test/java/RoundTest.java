@@ -22,6 +22,7 @@ public class RoundTest {
 
 	@After
 	public void tearDown() throws Exception {
+		round1.hardResetData();
 	}
 
 	@Test

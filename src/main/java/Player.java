@@ -37,6 +37,10 @@ public class Player implements Comparable<Player> {
 	public int compareTo(Player o) {
 		return this.hand.getRank().compareTo(o.getHand().getRank());
 	}
+	
+	public static void resetPlayers() {
+		players.set(0);
+	}
 
 	public String getName() {
 		return name;

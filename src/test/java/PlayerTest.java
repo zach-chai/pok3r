@@ -2,9 +2,21 @@
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class PlayerTest {
+	
+	@Before
+	public void setUp() throws Exception {
+		
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		Player.resetPlayers();
+	}
 
 	@Test
 	public void testId() throws Exception {

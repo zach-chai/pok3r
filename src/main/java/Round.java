@@ -98,6 +98,15 @@ public class Round {
 			System.out.println("Could not close input");
 		}
 	}
+	
+	public void softResetData() {
+		players.clear();
+	}
+	
+	public void hardResetData() {
+		softResetData();
+		Player.resetPlayers();
+	}
 
 	public List<Player> getPlayers() {
 		return players;
