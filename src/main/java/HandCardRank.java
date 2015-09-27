@@ -1,4 +1,4 @@
-package main;
+
 
 public enum HandCardRank {
 	HighCard, OnePair, TwoPair, ThreeKind, Straight,Flush,

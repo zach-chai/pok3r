@@ -1,4 +1,4 @@
-package main;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +31,16 @@ public class CardContainer {
 			}
 		}
 		return false;
+	}
+	
+	public Card getHighCard() {
+		Card highCard = cards.get(0);
+		for(Card card: cards) {
+			if(card.getValue().compareTo(highCard.getValue()) > 0) {
+				highCard = card;
+			}
+		}
+		return highCard;
 	}
 
 	public List<Card> getCards() {

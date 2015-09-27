@@ -1,19 +1,11 @@
-package test;
 
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
-import main.Card;
-import main.HandCardRank;
-import main.HandRank;
-import main.Suit;
-import main.Value;
-
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class HandRankTest {

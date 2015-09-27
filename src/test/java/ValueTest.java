@@ -1,7 +1,6 @@
-package test;
 
-import static org.junit.Assert.*;
-import main.Value;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 

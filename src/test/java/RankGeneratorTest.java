@@ -1,15 +1,9 @@
-package test;
 
-import static org.junit.Assert.*;
 
-import java.time.temporal.IsoFields;
-
-import main.Card;
-import main.Hand;
-import main.HandCardRank;
-import main.RankGenerator;
-import main.Suit;
-import main.Value;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;

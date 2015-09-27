@@ -1,4 +1,4 @@
-package main;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,19 +13,22 @@ public class RankGenerator {
 	}
 	
 	public HandCardRank Generate() {
-		if(isRoyalFlush()) return HandCardRank.RoyalFlush;
-		else if(hasStraightFlush()) return HandCardRank.StraightFlush;
-		else if(hasFourOfAKind()) return HandCardRank.FourKind;
-		else if(isFullHouse()) return HandCardRank.FullHouse;
-		else if(hasFlush()) return HandCardRank.Flush;
-		else if(hasStraight()) return HandCardRank.Straight;
-		else if(hasThreeOfAKInd()) return HandCardRank.ThreeKind;
-		else if(hasTwoPair()) return HandCardRank.TwoPair;
-		else if(hasOnePair()) return HandCardRank.OnePair;
+		if(hand.getCards().size() == 5) {
+			if(isRoyalFlush()) return HandCardRank.RoyalFlush;
+			else if(hasStraightFlush()) return HandCardRank.StraightFlush;
+			else if(hasFourOfAKind()) return HandCardRank.FourKind;
+			else if(isFullHouse()) return HandCardRank.FullHouse;
+			else if(hasFlush()) return HandCardRank.Flush;
+			else if(hasStraight()) return HandCardRank.Straight;
+			else if(hasThreeOfAKInd()) return HandCardRank.ThreeKind;
+			else if(hasTwoPair()) return HandCardRank.TwoPair;
+			else if(hasOnePair()) return HandCardRank.OnePair;
+		}
 		return HandCardRank.HighCard;
 	}
 	
 	public boolean isRoyalFlush() {
+		
 		return hasStraightFlush() && hand.containsValue(Value.ACE);
 	}
 	
@@ -42,6 +45,9 @@ public class RankGenerator {
 	}
 	
 	public boolean hasFlush() {
+		if(hand.getCards().size() < 5) {
+			return false;
+		}
 		Suit suit = hand.getCards().get(0).getSuit();
 		for(int i = 1; i < hand.getCards().size(); i++) {
 			if(!hand.getCards().get(i).getSuit().equals(suit)) {
@@ -52,6 +58,9 @@ public class RankGenerator {
 	}
 	
 	public boolean hasStraight() {
+		if(hand.getCards().size() < 5) {
+			return false;
+		}
 		Card minCard = hand.getCards().get(0);
 		boolean hasNextCard = false;
 		for(int i = 1; i < hand.getCards().size(); i++) {
