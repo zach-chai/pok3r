@@ -1,14 +1,17 @@
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class CardTest {
 	
+	@Rule
+	public final ExpectedException exception = ExpectedException.none();
 	Card card1;
 	Card card2;
 	Card card3;
@@ -49,6 +52,9 @@ public class CardTest {
 	public void testConstructingFromString() throws Exception {
 		assertEquals(card4, new Card("FourClubs"));
 		assertEquals(card3, new Card("KingDiamonds"));
+		// expects the following parameter to throw an error
+		exception.expect(IllegalArgumentException.class);
+		new Card("ThirteenClubs");
 	}
 	
 }

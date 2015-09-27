@@ -1,8 +1,6 @@
 
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
@@ -81,6 +79,11 @@ public class CardContainerTest {
 	public void testGetHighCard() throws Exception {
 		assertEquals(new Card(Value.QUEEN, Suit.HEARTS), cards3.getHighCard());
 		assertEquals(new Card(Value.ACE, Suit.HEARTS), cards2.getHighCard());
+	}
+	
+	@Test
+	public void testToString() throws Exception {
+		assertEquals("TwoSpades QueenHearts AceHearts EightDiamonds SevenClubs", cards2.toString());
 	}
 
 }
