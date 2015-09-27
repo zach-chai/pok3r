@@ -42,6 +42,15 @@ public class CardContainer {
 		}
 		return highCard;
 	}
+	
+	@Override
+	public String toString() {
+		String str = "";
+		for(Card card: cards) {
+			str += card.toString()+" ";
+		}
+		return str.substring(0, str.length() - 1);
+	}
 
 	public List<Card> getCards() {
 		return cards;
