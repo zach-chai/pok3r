@@ -22,7 +22,6 @@ public class Round {
 			System.out.println("Enter number of players for this round");
 			try {
 				num = Integer.parseInt(getInput());
-				System.out.println(num);
 			} catch (Exception e) {
 			}
 		} while(num < 2 || num > 4);
@@ -52,13 +51,11 @@ public class Round {
 						throw new IllegalArgumentException("player already has cards");
 					}
 					player.setHand(new Hand(Arrays.copyOfRange(tokens, 1, tokens.length)));
-					System.out.println(player.getHand().getCards().size());
 					failed = player.getHand().getCards().size() != 5;
 				} catch (Exception e) {
-					e.printStackTrace();
+					System.out.println("Invalid Input");
 					failed = true;
 				}
-				System.out.println(failed);
 			} while (failed);
 		}
 	}
