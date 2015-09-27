@@ -1,6 +1,7 @@
 
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,16 +11,18 @@ import java.util.List;
 public class Round {
 	
 	private BufferedReader console;
+	private BufferedWriter out;
 	private List<Player> players;
 	private int num;
 	
-	public Round(BufferedReader input) {
+	public Round(BufferedReader input, BufferedWriter output) {
 		this.console = input;
+		this.out = output;
 	}
 	
 	public void setupRound() {
 		do {
-			System.out.println("Enter number of players for this round");
+			println("Enter number of players for this round");
 			try {
 				num = Integer.parseInt(getInput());
 			} catch (Exception e) {
@@ -31,7 +34,7 @@ public class Round {
 		for(int i = 0; i < num; ++i) {
 			p = new Player();
 			players.add(p);
-			System.out.println("Player created and given id " + p.getId());
+			println("Player created and given id " + p.getId());
 		}
 	}
 	
@@ -42,7 +45,7 @@ public class Round {
 		boolean failed;
 		for(int i = 0; i < players.size(); ++i) {
 			do {
-				System.out.println(String.format("Enter hand %d remaining", players.size() - i));
+				println(String.format("Enter hand %d remaining", players.size() - i));
 				try {
 					input = getInput();
 					tokens = input.split(" ");
@@ -53,7 +56,7 @@ public class Round {
 					player.setHand(new Hand(Arrays.copyOfRange(tokens, 1, tokens.length)));
 					failed = player.getHand().getCards().size() != 5;
 				} catch (Exception e) {
-					System.out.println("Invalid Input");
+					println("Invalid Input");
 					failed = true;
 				}
 			} while (failed);
@@ -61,22 +64,24 @@ public class Round {
 	}
 	
 	public void rankPlayers() {
-		System.out.println("Ranking Players...");
+		println("Ranking Players...");
 		for(Player player: players) {
 			player.getHand().generateRank();
 		}
 		Collections.sort(players);
 		Collections.reverse(players);
-		System.out.println("done.");
+		println("Done.");
 	}
 	
 	public void outputRanks() {
 		String output;
 		int i = 0;
 		for(Player player: players) {
-			output = String.format("%d %s %d", player.getId(), player.getHand().toString(), ++i);
-			System.out.println(output);
+			output = String.format("Rank %d -- Player Id %d -- %s",
+					++i, player.getId(), player.getHand().toString());
+			println(output);
 		}
+		closeInput();
 	}
 	
 	public String getInput() {
@@ -88,11 +93,20 @@ public class Round {
 		return null;
 	}
 	
+	public void println(String str) {
+		try {
+			out.write(str+"\n");
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void closeInput() {
 		try {
 			console.close();
 		} catch (IOException e) {
-			System.out.println("Could not close input");
+			println("Could not close input");
 		}
 	}
 	
