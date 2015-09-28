@@ -23,6 +23,11 @@ Alternatively
 * You can run it with the same command ```java -jar poker_ranking-1.0.0-jar-with-dependencies.jar```
 
 
+### Playing Instructions
+* First input is the number of players
+* Next you need to enter the hands for each player id followed by cards. Example ```0 AceHearts NineClubs FiveClubs JackDiamonds EightSpades```
+* Once you entered a hand for each player it will calculate the ranks and output them
+
 ### Traceability
 * Each Class's tests are in a file suffixed with the word test, tests for ```Card.java``` are in ```CardTest.java```.
 * Tests for Top level Game flow are in RoundTest.java
