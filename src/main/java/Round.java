@@ -24,7 +24,7 @@ public class Round {
 	public void setupRound() {
 		this.resetData();
 		do {
-			println("Enter number of players for this round");
+			println("Enter number of players for this round (2-4)");
 			try {
 				num = Integer.parseInt(getInput());
 			} catch (Exception e) {
