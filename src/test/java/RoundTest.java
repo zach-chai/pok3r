@@ -42,7 +42,7 @@ public class RoundTest {
 		when(mockReader.readLine()).thenReturn("3");
 		round1.setupRound();
 		assertEquals(3, round1.getPlayers().size());
-		assertEquals("Enter number of players for this round", reader.readLine());
+		assertEquals("Enter number of players for this round (2-4)", reader.readLine());
 		assertEquals("Player created and given id 0", reader.readLine());
 		assertEquals("Player created and given id 1", reader.readLine());
 		assertEquals("Player created and given id 2", reader.readLine());
@@ -157,7 +157,7 @@ public class RoundTest {
 		round1.rankPlayers();
 		round1.outputRanks();
 		// check all output
-		assertEquals("Enter number of players for this round", reader.readLine());
+		assertEquals("Enter number of players for this round (2-4)", reader.readLine());
 		assertEquals("Player created and given id 0", reader.readLine());
 		assertEquals("Player created and given id 1", reader.readLine());
 		assertEquals("Enter hand 2 remaining", reader.readLine());
