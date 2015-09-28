@@ -19,7 +19,7 @@ Alternatively
  * Run Game.java to start Game
 
 Alternatively
-* If you would like to just run the game there is a builT jar under releases
+* If you would like to just run the game there is a built jar under releases
 * You can run it with the same command ```java -jar poker_ranking-1.0.0-jar-with-dependencies.jar```
 
 
