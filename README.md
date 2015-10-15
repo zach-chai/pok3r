@@ -1,4 +1,5 @@
 # Poker Hand Ranking Game
+[![Build Status](https://travis-ci.org/zach-chai/poker-ranking-game.svg?branch=master)](https://travis-ci.org/zach-chai/poker-ranking-game)
 
 Simple Poker Hand Ranking Game for COMP 4004 Course
 
